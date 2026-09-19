@@ -1,4 +1,4 @@
-```yaml
+
 name: Build ONECLICK Windows
 
 on:
@@ -9,23 +9,23 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Récupérer le projet
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Installer Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Installer les dépendances
+      - name: Install dependencies
         run: npm install
 
-      - name: Construire ONECLICK
+      - name: Build Windows
         run: npm run build:win
 
-      - name: Publier le fichier EXE
+      - name: Upload EXE
         uses: actions/upload-artifact@v4
         with:
           name: ONECLICK-Windows
           path: dist/*.exe
-```
+
